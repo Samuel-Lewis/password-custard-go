@@ -13,7 +13,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	pack := "hello!"
+	pack := "something"
 
 	err = tmpl.Execute(w, pack)
 	if err != nil {
