@@ -2,6 +2,7 @@ package models
 
 import (
 	"bufio"
+	"fmt"
 	"log"
 	"os"
 )
@@ -14,6 +15,12 @@ var AdjList []string
 
 // NounList stored nouns from file
 var NounList []string
+
+// LeetSpeak for random substitutes
+var LeetSpeak map[byte][]byte
+
+// Symbols for random insertion
+var Symbols []byte
 
 // ReadWords from file
 func ReadWords(path string, list []string) {
@@ -31,6 +38,44 @@ func ReadWords(path string, list []string) {
 		list = append(list, scanner.Text())
 	}
 
-	log.Printf("Loaded %d many lines from '%s'", len(list), path)
+	log.Printf("Loaded %d words from '%s'", len(list), path)
+}
 
+func ReadSymbols(path string) {
+	file, err := os.Open(path)
+	if err != nil {
+		log.Fatalln(err.Error())
+		return
+	}
+	defer file.Close()
+
+	// Clear the list (to not double up)
+	Symbols = []byte{}
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		Symbols = append(Symbols, []byte(scanner.Text())...)
+	}
+
+	log.Printf("Loaded %d symbols from '%s'", len(Symbols), path)
+}
+
+func ReadLeet(path string) {
+	file, err := os.Open(path)
+	if err != nil {
+		log.Fatalln(err.Error())
+		return
+	}
+	defer file.Close()
+
+	// Clear the list (to not double up)
+	LeetSpeak = map[byte][]byte{}
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		var key byte
+		var datas string
+		fmt.Sscanf(scanner.Text(), "%c | %s", &key, &datas)
+		LeetSpeak[key] = []byte(datas)
+	}
+
+	log.Printf("Loaded %d characters from '%s'", len(LeetSpeak), path)
 }
