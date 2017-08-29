@@ -7,8 +7,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/Samuel-Lewis/PassGen/app/controllers"
-	"github.com/Samuel-Lewis/PassGen/app/models"
+	"github.com/Samuel-Lewis/Password-Custard/app/controllers"
+	"github.com/Samuel-Lewis/Password-Custard/app/models"
 )
 
 func main() {

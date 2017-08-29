@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/Samuel-Lewis/PassGen/app/models"
+	"github.com/Samuel-Lewis/Password-Custard/app/models"
 )
 
 type PassOut struct {
