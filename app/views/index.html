@@ -1,31 +1,46 @@
-<html lang="en">
+<!DOCTYPE html>
+<html>
+
 <head>
 	<meta charset="utf-8">
+	<meta lang="en">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="icon" href="../../favicon.ico">
 
-	<title> | Password Generator</title>
+	<title>Password Custard</title>
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-	<!-- Custom styles for this template -->
-	<link href="grid.css" rel="stylesheet">
+	 <link rel="stylesheet" href="/static/stylesheets/index.css">
 </head>
 
 <body>
 
 <div class="container">
 	<div class="row">
-		<div class ="col-md-12">
-			<h1>Sandwich</h1>
-			<h3>The friendly password generator</h3>
-
-			<input id="generate-password" class="btn btn-primary btn-lg" type="submit" value="Generate">
+		<div class ="col-md-8 offset-md-2 text-center">
+			</br>
+			<h1>Password Custard</h1>
+			<h4><i>The friendly password generator</i></h4>
+			</br>
+			
+			<div class="card text-center">
+				<div class="card-header">
+					Your new password is...
+				</div>
+				<div class="card-block">
+					<h1 class="card-title" id="password-field">hunter2</h1>
+				</div>
+				<div class="card-footer text-muted">
+					<button id="generate-password" class="btn btn-primary btn-lg">Generate</a>
+				</div>
+			</div>
 
 		</div>
 	</div>
-			
 </div>
 
 </body>
+<script src="/static/js/fetchpass.js"></script>
+
 </html>
