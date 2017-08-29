@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 )
 
 // VerbList stored verbs from file
@@ -23,22 +24,25 @@ var LeetSpeak map[byte][]byte
 var Symbols []byte
 
 // ReadWords from file
-func ReadWords(path string, list []string) {
+func ReadWords(path string) []string {
 	file, err := os.Open(path)
 	if err != nil {
 		log.Fatalln(err.Error())
-		return
+		return []string{}
 	}
 	defer file.Close()
 
 	// Clear the list (to not double up)
-	list = []string{}
+	list := []string{}
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
-		list = append(list, scanner.Text())
+		word := scanner.Text()
+		word = strings.Title(word)
+		list = append(list, word)
 	}
 
 	log.Printf("Loaded %d words from '%s'", len(list), path)
+	return list
 }
 
 func ReadSymbols(path string) {
