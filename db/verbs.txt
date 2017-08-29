@@ -1093,7 +1093,7 @@ haul
 haunt
 have
 head
-head-butt
+headbutt
 heal
 health
 heap
@@ -1752,7 +1752,7 @@ rationalize
 rattle
 ravage
 rave
-re-evaluate
+reevaluate
 reach
 reacquaint
 react
@@ -2620,7 +2620,7 @@ wring
 wrinkle
 write
 writhe
-x-ray
+xray
 yank
 yap
 yawn
