@@ -35,7 +35,7 @@ func Raw(w http.ResponseWriter, r *http.Request) {
 func GeneratePassword() string {
 
 	phrase := []string{
-		// models.VerbList[rand.Intn(len(models.VerbList))],
+		models.VerbList[rand.Intn(len(models.VerbList))],
 		models.AdjList[rand.Intn(len(models.AdjList))],
 		models.NounList[rand.Intn(len(models.NounList))],
 	}
