@@ -19,9 +19,9 @@ func main() {
 
 	rand.Seed(time.Now().Unix())
 
-	models.ReadWords("db/verbs.txt", models.VerbList)
-	models.ReadWords("db/adjectives.txt", models.AdjList)
-	models.ReadWords("db/nouns.txt", models.NounList)
+	models.VerbList = models.ReadWords("db/verbs.txt")
+	models.AdjList = models.ReadWords("db/adjectives.txt")
+	models.NounList = models.ReadWords("db/nouns.txt")
 	models.ReadLeet("db/leet.txt")
 	models.ReadSymbols("db/symbols.txt")
 
@@ -29,6 +29,7 @@ func main() {
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
 	http.HandleFunc("/", controllers.Index)
+	http.HandleFunc("/raw", controllers.Raw)
 
 	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
