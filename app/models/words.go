@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"strings"
 )
 
 // VerbList stored verbs from file
@@ -36,9 +35,7 @@ func ReadWords(path string) []string {
 	list := []string{}
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
-		word := scanner.Text()
-		word = strings.Title(word)
-		list = append(list, word)
+		list = append(list, scanner.Text())
 	}
 
 	log.Printf("Loaded %d words from '%s'", len(list), path)
