@@ -4,7 +4,8 @@ $(document).ready(function() {
 			url: "/raw",
 			method: "GET",
 			success: function(data) {
-				$("#password-field").html(data);
+				
+				$("#password-field").html($("<div />").text(data).html());
 			},
 		});
 	});
