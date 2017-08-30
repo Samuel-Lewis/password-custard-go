@@ -2,8 +2,6 @@ package controllers
 
 import (
 	"fmt"
-	"html/template"
-	"log"
 	"math/rand"
 	"net/http"
 	"strconv"
@@ -17,19 +15,8 @@ type PassOut struct {
 }
 
 func Raw(w http.ResponseWriter, r *http.Request) {
-	tmpl, err := template.ParseFiles("app/views/raw.html")
-	if err != nil {
-		log.Fatal(err.Error())
-		return
-	}
-
-	pack := PassOut{Password: GeneratePassword()}
-
-	err = tmpl.Execute(w, pack)
-	if err != nil {
-		log.Fatal(err.Error())
-		return
-	}
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte(GeneratePassword()))
 }
 
 func GeneratePassword() string {
