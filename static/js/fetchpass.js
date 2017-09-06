@@ -1,7 +1,6 @@
-const history = [];
-
+// Pulls password from /raw API
 $(document).ready(function() {
-	
+	// GET data from /raw to show
 	$("#generate-password").on('click', function() {
 		$.ajax({
 			url: "/raw",
@@ -15,10 +14,28 @@ $(document).ready(function() {
 			},
 		});
 	});
+	$("#generate-password").click();
 
-	$("#generate-password").click()
+
+	// Copy on click
+	$("#copy-password").on('click', function() {
+		// Create temp textarea, put text in it, copy from that
+		var textArea = document.createElement("textarea");
+		textArea.value = document.querySelector('#password-field').innerHTML;
+		document.body.appendChild(textArea);
+
+		textArea.select();
+		try {
+			document.execCommand('copy');
+		} catch (err) {
+			alert("Browser does not support copy and paste automation :(");
+		}
+		document.body.removeChild(textArea);
+	});
 });
 
+// Pastes last 10 passwords to history box
+const history = [];
 function logPass(pass) {
 	$("#history").html(history.join('</br>'));
 
