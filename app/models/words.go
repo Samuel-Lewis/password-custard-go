@@ -35,7 +35,11 @@ func ReadWords(path string) []string {
 	list := []string{}
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
-		list = append(list, scanner.Text())
+		word := scanner.Text()
+		if len(word) > 6 {
+			continue
+		}
+		list = append(list, word)
 	}
 
 	log.Printf("Loaded %d words from '%s'", len(list), path)
