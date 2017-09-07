@@ -1,3 +1,5 @@
+let last_raw = "";
+
 // Pulls password from /raw API
 $(document).ready(function() {
 	// GET data from /raw to show
@@ -10,6 +12,7 @@ $(document).ready(function() {
 				// Send to heading
 				$("#password-field").html(pass);
 
+				last_raw = data;
 				logPass(pass);
 			},
 		});
@@ -21,7 +24,7 @@ $(document).ready(function() {
 	$("#copy-password").on('click', function() {
 		// Create temp textarea, put text in it, copy from that
 		var textArea = document.createElement("textarea");
-		textArea.value = document.querySelector('#password-field').innerHTML;
+		textArea.value = last_raw;
 		document.body.appendChild(textArea);
 
 		textArea.select();
