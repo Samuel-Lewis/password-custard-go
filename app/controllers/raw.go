@@ -10,16 +10,19 @@ import (
 	"github.com/Samuel-Lewis/Password-Custard/app/models"
 )
 
+// PassOut response type to the write
 type PassOut struct {
 	Password string
 }
 
+// Raw handles the /raw call (used for all password generating)
 func Raw(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
-	w.Write([]byte(GeneratePassword()))
+	w.Write([]byte(generatePassword()))
 }
 
-func GeneratePassword() string {
+// GeneratePassword makes the password
+func generatePassword() string {
 
 	phrase := []string{
 		models.VerbList[rand.Intn(len(models.VerbList))],
@@ -27,23 +30,23 @@ func GeneratePassword() string {
 		models.NounList[rand.Intn(len(models.NounList))],
 	}
 
-	// Capitalize random word and title casing
-	phrase = Capitalize(phrase)
+	// capitalize random word and title casing
+	phrase = capitalize(phrase)
 
 	// Replace leet
-	phrase = Leet(phrase)
+	phrase = leet(phrase)
 
-	// Insert numbers
-	phrase = Insert(phrase, strconv.Itoa(rand.Intn(1000)))
+	// insert numbers
+	phrase = insert(phrase, strconv.Itoa(rand.Intn(1000)))
 
-	// Insert symbols
-	phrase = Insert(phrase, string(models.Symbols[rand.Intn(len(models.Symbols))]))
+	// insert symbols
+	phrase = insert(phrase, string(models.Symbols[rand.Intn(len(models.Symbols))]))
 
 	return strings.Join(phrase, "")
 }
 
-// Capitalize random word and title casing
-func Capitalize(phrase []string) []string {
+// capitalize random word and title casing
+func capitalize(phrase []string) []string {
 	// Title case everything
 	var newPhrase []string
 	for _, x := range phrase {
@@ -66,8 +69,8 @@ func Capitalize(phrase []string) []string {
 	return phrase
 }
 
-// Leet chars on random values
-func Leet(phrase []string) []string {
+// leet chars on random values
+func leet(phrase []string) []string {
 	// repeats := rand.Intn(len(phrase) - 1)
 	// for i := 1; i <= repeats; i++ {
 	// 	randWord := rand.Intn(len(phrase))
@@ -78,7 +81,7 @@ func Leet(phrase []string) []string {
 }
 
 // Number adds random number between words
-func Insert(phrase []string, in string) []string {
+func insert(phrase []string, in string) []string {
 	word := rand.Intn(len(phrase) + 1)
 
 	if word == len(phrase) {
