@@ -4,26 +4,36 @@ import (
 	"bufio"
 	"fmt"
 	"log"
+	"math/rand"
 	"os"
 )
 
-// VerbList stored verbs from file
-var VerbList []string
+var types map[string][]string
+var leet map[byte][]byte
+var symbols []byte
 
-// AdjList stored Adjectives from file
-var AdjList []string
+// Preload called on wake, loads data to model
+func Preload() {
+	types = make(map[string][]string)
+	types["verb"] = readWords("db/verbs.txt")
+	types["adjective"] = readWords("db/adjectives.txt")
+	types["noun"] = readWords("db/nouns.txt")
 
-// NounList stored nouns from file
-var NounList []string
+	leet = readLeet("db/leet.txt")
+	symbols = readSymbols("db/symbols.txt")
+}
 
-// LeetSpeak for random substitutes
-var LeetSpeak map[byte][]byte
+// GetWord returns a random word from a given word type
+func GetWord(t string) string {
+	if val, ok := types[t]; ok {
+		return val[rand.Intn(len(val))]
+	}
 
-// Symbols for random insertion
-var Symbols []byte
+	log.Printf("WARNING! Tried to access a word type that doesn't exist! '%s'", t)
+	return "hunter"
+}
 
-// ReadWords from file
-func ReadWords(path string) []string {
+func readWords(path string) []string {
 	file, err := os.Open(path)
 	if err != nil {
 		log.Fatalln(err.Error())
@@ -46,41 +56,45 @@ func ReadWords(path string) []string {
 	return list
 }
 
-func ReadSymbols(path string) {
+// readSymbols reads a list of words and returns it
+func readSymbols(path string) []byte {
+	s := []byte{}
 	file, err := os.Open(path)
 	if err != nil {
 		log.Fatalln(err.Error())
-		return
+		return s
 	}
 	defer file.Close()
 
 	// Clear the list (to not double up)
-	Symbols = []byte{}
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
-		Symbols = append(Symbols, []byte(scanner.Text())...)
+		s = append(symbols, []byte(scanner.Text())...)
 	}
 
-	log.Printf("Loaded %d symbols from '%s'", len(Symbols), path)
+	log.Printf("Loaded %d symbols from '%s'", len(s), path)
+	return s
 }
 
-func ReadLeet(path string) {
+// readLeet gets a table of chars corresponding to different symbol substitutions
+func readLeet(path string) map[byte][]byte {
+	l := map[byte][]byte{}
 	file, err := os.Open(path)
 	if err != nil {
 		log.Fatalln(err.Error())
-		return
+		return l
 	}
 	defer file.Close()
 
 	// Clear the list (to not double up)
-	LeetSpeak = map[byte][]byte{}
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		var key byte
 		var datas string
 		fmt.Sscanf(scanner.Text(), "%c | %s", &key, &datas)
-		LeetSpeak[key] = []byte(datas)
+		l[key] = []byte(datas)
 	}
 
-	log.Printf("Loaded %d characters from '%s'", len(LeetSpeak), path)
+	log.Printf("Loaded %d characters from '%s'", len(l), path)
+	return l
 }

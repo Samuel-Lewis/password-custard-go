@@ -4,10 +4,9 @@ import (
 	"fmt"
 	"math/rand"
 	"net/http"
-	"strconv"
 	"strings"
 
-	"github.com/Samuel-Lewis/Password-Custard/app/models"
+	"github.com/Samuel-Lewis/Password-Custard/app/models/feature"
 )
 
 // PassOut response type to the write
@@ -24,23 +23,11 @@ func Raw(w http.ResponseWriter, r *http.Request) {
 // GeneratePassword makes the password
 func generatePassword() string {
 
-	phrase := []string{
-		models.VerbList[rand.Intn(len(models.VerbList))],
-		models.AdjList[rand.Intn(len(models.AdjList))],
-		models.NounList[rand.Intn(len(models.NounList))],
-	}
+	phrase := []string{""}
 
-	// capitalize random word and title casing
-	phrase = capitalize(phrase)
-
-	// Replace leet
-	phrase = leet(phrase)
-
-	// insert numbers
-	phrase = insert(phrase, strconv.Itoa(rand.Intn(1000)))
-
-	// insert symbols
-	phrase = insert(phrase, string(models.Symbols[rand.Intn(len(models.Symbols))]))
+	phrase = feature.Get("noun")(phrase)
+	phrase = feature.Get("verb")(phrase)
+	phrase = feature.Get("adjective")(phrase)
 
 	return strings.Join(phrase, "")
 }
