@@ -23,6 +23,7 @@ func Register() {
 	features["noun"] = Noun
 	features["verb"] = Verb
 	features["adjective"] = Adjective
+	features["symbolsimple"] = SymbolSimple
 
 	log.Printf("Registered %d features", len(features))
 }
