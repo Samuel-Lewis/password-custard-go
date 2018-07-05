@@ -33,6 +33,12 @@ func GetWord(t string) string {
 	return "hunter"
 }
 
+// GetSymbol returns a random symbol
+func GetSymbol() string {
+	s := symbols[rand.Intn(len(symbols))]
+	return string(s)
+}
+
 func readWords(path string) []string {
 	file, err := os.Open(path)
 	if err != nil {

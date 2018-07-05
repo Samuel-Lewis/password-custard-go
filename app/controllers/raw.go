@@ -29,6 +29,8 @@ func generatePassword() string {
 	phrase = feature.Get("verb")(phrase)
 	phrase = feature.Get("adjective")(phrase)
 
+	phrase = feature.Get("symbolsimple")(phrase)
+
 	return strings.Join(phrase, "")
 }
 
