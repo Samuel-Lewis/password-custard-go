@@ -8,47 +8,50 @@
 
 	<title>Password Custard</title>
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+	  crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://use.fontawesome.com/afc71987e5.js"></script>
 
-	 <link rel="stylesheet" href="/static/stylesheets/index.css">
+	<link rel="stylesheet" href="/static/stylesheets/index.css">
 </head>
 
 <body>
+	<div class="container">
+		<div class="row" id="main-window">
+			<div class="col-md-8 offset-md-2 text-center">
+				</br>
+				<h1>——&nbsp;&nbsp;&nbsp;PASSWORD CUSTARD&nbsp;&nbsp;&nbsp;——</h1>
+				<h4>
+					<i>The friendly password generator</i>
+				</h4>
+				</br>
 
-<div class="container">
-	<div class="row" id="main-window">
-		<div class ="col-md-8 offset-md-2 text-center">
-			</br>
-			<h1>——&nbsp;&nbsp;&nbsp;PASSWORD CUSTARD&nbsp;&nbsp;&nbsp;——</h1>
-			<h4><i>The friendly password generator</i></h4>
-			</br>
-			
-			<div class="card text-center">
-				<div class="card-header">
-					Your new password is...
+				<div class="card text-center">
+					<div class="card-header">
+						Your new password is...
+					</div>
+					<div class="card-block">
+						<i id="copy-password" class="fa fa-clone"></i>
+						<h1 class="password card-title" id="password-field">hunter2</h1>
+					</div>
+					<div class="card-footer">
+						<button id="generate-password" class="btn btn-outline-primary btn-lg">Generate</button>
+					</div>
 				</div>
-				<div class="card-block">
-					<i id="copy-password" class="fa fa-clone"></i>
-					<h1 class="password card-title" id="password-field">hunter2</h1>
-				</div>
-				<div class="card-footer">
-					<button id="generate-password" class="btn btn-outline-primary btn-lg">Generate</button>
-				</div>
+				</br>
+				<div id="history" class="password text-muted"></div>
 			</div>
-			</br>
-			<div id="history" class="password text-muted"></div>
 		</div>
 	</div>
-</div>
 
-<footer class="footer">
-	<div class="container text-center text-muted">
-		</br>
-		By <a href="https://github.com/Samuel-Lewis">Samuel Lewis</a>
-	</div>
-</footer>
+	<footer class="footer">
+		<div class="container text-center text-muted">
+			</br>
+			By
+			<a href="https://github.com/Samuel-Lewis">Samuel Lewis</a>
+		</div>
+	</footer>
 
 </body>
 <script src="/static/js/fetchpass.js"></script>
