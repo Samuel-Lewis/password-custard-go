@@ -27,6 +27,7 @@ func Register() {
 	groups["word"] = []string{"noun", "verb", "adjective"}
 	groups["symbol"] = []string{"symbolsimple", "symbolrandom", "symbolreplace"}
 	groups["capitalise"] = []string{"titlecase", "uppercase"}
+	groups["number"] = []string{"numbersimple", "numberrandom"}
 
 	features["noun"] = Noun
 	features["verb"] = Verb
@@ -36,12 +37,14 @@ func Register() {
 	features["symbolreplace"] = SymbolReplace
 	features["titlecase"] = TitleCase
 	features["uppercase"] = UpperCase
+	features["numberrandom"] = NumberRandom
+	features["numbersimple"] = NumberSimple
 
 	order = []string{
 		"noun", "verb", "adjective",
 		"titlecase", "uppercase",
 		"leet",
-		"numberreplace", "symbolreplace",
+		"symbolreplace",
 		"numberrandom", "symbolrandom",
 		"numbersimple", "symbolsimple",
 	}

@@ -29,6 +29,7 @@ func generatePassword() string {
 	feats = append(feats, feature.Choose("symbol"))
 	feats = append(feats, feature.Choose("uppercase"))
 	feats = append(feats, feature.Choose("titlecase"))
+	feats = append(feats, feature.Choose("number"))
 
 	// Orders application of features
 	feats = feature.Order(feats)
