@@ -1353,6 +1353,8 @@ rude
 rundown
 runny
 rural
+rustic
+rusty
 ruthless
 sable
 sad

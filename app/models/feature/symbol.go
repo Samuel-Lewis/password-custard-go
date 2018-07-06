@@ -9,8 +9,8 @@ func SymbolSimple(s []string) []string {
 	return Insert(models.GetSymbol(), s)
 }
 
-// SmybolRandom inserts a random symbol into an exsiting word
-func SmybolRandom(s []string) []string {
+// SymbolRandom inserts a random symbol into an exsiting word
+func SymbolRandom(s []string) []string {
 	// TODO
 	return SymbolSimple(s)
 }
