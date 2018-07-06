@@ -1222,7 +1222,6 @@ construction
 consul
 consulate
 contact
-contact lens
 contagion
 container
 contamination
@@ -1340,7 +1339,6 @@ credenza
 credit
 creditor
 creek
-creme brulee
 crest
 crew
 crib
@@ -1685,17 +1683,14 @@ dugout
 dulcimer
 dumbwaiter
 dump
-dump truck
 dumpster
 dunce
 dune
-dune buggy
 dungarees
 dungeon
 duplexer
 dusk
 dust
-dust storm
 duster
 dustpan
 duty
@@ -5601,8 +5596,6 @@ sourdough
 sourwood
 sousaphone
 south
-south america
-south korea
 southerner
 southpaw
 souvenir

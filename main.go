@@ -9,6 +9,7 @@ import (
 
 	"github.com/Samuel-Lewis/Password-Custard/app/controllers"
 	"github.com/Samuel-Lewis/Password-Custard/app/models"
+	"github.com/Samuel-Lewis/Password-Custard/app/models/feature"
 )
 
 func main() {
@@ -18,12 +19,8 @@ func main() {
 	}
 
 	rand.Seed(time.Now().Unix())
-
-	models.VerbList = models.ReadWords("db/verbs.txt")
-	models.AdjList = models.ReadWords("db/adjectives.txt")
-	models.NounList = models.ReadWords("db/nouns.txt")
-	models.ReadLeet("db/leet.txt")
-	models.ReadSymbols("db/symbols.txt")
+	models.Preload()
+	feature.Register()
 
 	fs := http.FileServer(http.Dir("static"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))

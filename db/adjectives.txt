@@ -39,7 +39,6 @@ acrobatic
 active
 actual
 actually
-ad hoc
 adamant
 adaptable
 addicted
@@ -1354,7 +1353,8 @@ rude
 rundown
 runny
 rural
-rustic  rusty
+rustic
+rusty
 ruthless
 sable
 sad
