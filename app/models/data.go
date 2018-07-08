@@ -2,9 +2,10 @@ package models
 
 import (
 	"bufio"
+	"crypto/rand"
 	"fmt"
 	"log"
-	"math/rand"
+	"math/big"
 	"os"
 )
 
@@ -26,7 +27,7 @@ func Preload() {
 // GetWord returns a random word from a given word type
 func GetWord(t string) string {
 	if val, ok := types[t]; ok {
-		return val[rand.Intn(len(val))]
+		return val[GetRand(0, len(val))]
 	}
 
 	log.Printf("WARNING! Tried to access a word type that doesn't exist! '%s'", t)
@@ -35,8 +36,22 @@ func GetWord(t string) string {
 
 // GetSymbol returns a random symbol
 func GetSymbol() string {
-	s := symbols[rand.Intn(len(symbols))]
+	s := symbols[GetRand(0, len(symbols))]
 	return string(s)
+}
+
+// GetRand gets a crypto rand generated number between min and max inclusive
+func GetRand(min int, max int) int {
+	if max-min == 0 {
+		return 0
+	}
+
+	bg := big.NewInt(int64(max) - int64(min))
+	n, err := rand.Int(rand.Reader, bg)
+	if err != nil {
+		log.Fatalln("Could not make random number ", err)
+	}
+	return int(n.Int64() + int64(min))
 }
 
 func readWords(path string) []string {
