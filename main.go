@@ -2,10 +2,8 @@ package main
 
 import (
 	"log"
-	"math/rand"
 	"net/http"
 	"os"
-	"time"
 
 	"github.com/Samuel-Lewis/Password-Custard/app/controllers"
 	"github.com/Samuel-Lewis/Password-Custard/app/models"
@@ -18,7 +16,6 @@ func main() {
 		port = "3000"
 	}
 
-	rand.Seed(time.Now().Unix())
 	models.Preload()
 	feature.Register()
 

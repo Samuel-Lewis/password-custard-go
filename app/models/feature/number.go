@@ -2,12 +2,13 @@ package feature
 
 import (
 	"fmt"
-	"math/rand"
+
+	"github.com/Samuel-Lewis/Password-Custard/app/models"
 )
 
 // NumberSimple inserts a random number between words
 func NumberSimple(s []string) []string {
-	n := rand.Intn(1000)
+	n := models.GetRand(0, 1000)
 	return Insert(fmt.Sprint(n), s)
 }
 

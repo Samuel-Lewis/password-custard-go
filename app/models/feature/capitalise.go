@@ -1,8 +1,9 @@
 package feature
 
 import (
-	"math/rand"
 	"strings"
+
+	"github.com/Samuel-Lewis/Password-Custard/app/models"
 )
 
 // TitleCase changes all words to title case
@@ -20,7 +21,7 @@ func UpperCase(s []string) []string {
 		return s
 	}
 
-	i := rand.Intn(l)
+	i := models.GetRand(0, l)
 	s[i] = strings.ToUpper(s[i])
 
 	// Make following word lower, for readability

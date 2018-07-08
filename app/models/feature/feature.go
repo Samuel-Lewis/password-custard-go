@@ -2,8 +2,9 @@ package feature
 
 import (
 	"log"
-	"math/rand"
 	"sort"
+
+	"github.com/Samuel-Lewis/Password-Custard/app/models"
 )
 
 // Applier is function type for function to take the current password, manipulate, and return it
@@ -55,7 +56,7 @@ func Register() {
 // Choose selects a random from a group, or if not a group, returns it self
 func Choose(s string) string {
 	if val, ok := groups[s]; ok {
-		return val[rand.Intn(len(val))]
+		return val[models.GetRand(0, len(val))]
 	}
 	return s
 }
@@ -74,7 +75,7 @@ func Insert(s string, p []string) []string {
 		return []string{s}
 	}
 
-	i := rand.Intn(len(p) + 1)
+	i := models.GetRand(0, len(p)+1)
 	p = append(p, "")
 	copy(p[i+1:], p[i:])
 	p[i] = s

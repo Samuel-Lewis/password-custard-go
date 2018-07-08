@@ -2,12 +2,12 @@ package controllers
 
 import (
 	"log"
-	"math/rand"
 	"net/http"
 	"regexp"
 	"strconv"
 	"strings"
 
+	"github.com/Samuel-Lewis/Password-Custard/app/models"
 	"github.com/Samuel-Lewis/Password-Custard/app/models/feature"
 )
 
@@ -43,14 +43,9 @@ func generatePassword(q string) string {
 		tokens := strings.Split(i, ":")
 
 		// Error checked in initial parse at controllers.Raw
-		rangeS, _ := strconv.Atoi(tokens[1])
-		rangeE, _ := strconv.Atoi(tokens[2])
-
-		r := rangeE - rangeS + 1
-		if r > 0 {
-			r = rand.Intn(r)
-		}
-		r += rangeS
+		s, _ := strconv.Atoi(tokens[1])
+		e, _ := strconv.Atoi(tokens[2])
+		r := models.GetRand(s, e+1)
 
 		for r > 0 {
 			r--
