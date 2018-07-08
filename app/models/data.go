@@ -40,7 +40,7 @@ func GetSymbol() string {
 	return string(s)
 }
 
-// GetRand gets a crypto rand generated number between min and max inclusive
+// GetRand gets a crypto rand generated number in range [min, max)
 func GetRand(min int, max int) int {
 	if max-min == 0 {
 		return 0
