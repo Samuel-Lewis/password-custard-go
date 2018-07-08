@@ -8,38 +8,49 @@
 
 	<title>Password Custard</title>
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
-	  crossorigin="anonymous">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="https://use.fontawesome.com/afc71987e5.js"></script>
 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/static/stylesheets/index.css">
 </head>
 
 <body>
 	<div class="container">
-		<div class="row" id="main-window">
+		<div class="row">
 			<div class="col-md-8 offset-md-2 text-center">
-				</br>
-				<h1>——&nbsp;&nbsp;&nbsp;PASSWORD CUSTARD&nbsp;&nbsp;&nbsp;——</h1>
+				<h1 id="title">
+					<span>PASSWORD CUSTARD</span>
+				</h1>
 				<h4>
 					<i>The friendly password generator</i>
 				</h4>
-				</br>
+			</div>
+		</div>
 
+		<div class="row">
+			<div class="col-md-8 offset-md-2 text-center">
 				<div class="card text-center">
 					<div class="card-header">
 						Your new password is...
 					</div>
 					<div class="card-block">
-						<i id="copy-password" class="fa fa-clone"></i>
+						<button id="copy-password" class="btn" data-toggle="tooltip" title="Copy" data-placement="right">
+							<i class="fa fa-clone"></i>
+						</button>
 						<h1 class="password card-title" id="password-field">hunter2</h1>
 					</div>
 					<div class="card-footer">
 						<button id="generate-password" class="btn btn-outline-primary btn-lg">Generate</button>
 					</div>
 				</div>
-				</br>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-8 offset-md-2 text-center">
 				<div id="history" class="password text-muted"></div>
 			</div>
 		</div>
