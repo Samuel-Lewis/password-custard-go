@@ -83,8 +83,17 @@ h4 {
 	vertical-align: middle;
 }
 
+.custom span {
+	margin-top: 5px;
+}
+
 .opt .entry {
 	flex-grow: 1;
+}
+
+.opt .check {
+	position: relative;
+	left: 20px;
 }
 
 .slider .noUi-connect {

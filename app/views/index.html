@@ -53,28 +53,33 @@
 						<div id="options" class="collapse">
 							<br/>
 
-							<div class="opt" data-toggle="tooltip" title="Random verbs, adjectives and nouns" data-placement="right">
+							<div class="opt" data-toggle="tooltip" title="Random verbs, adjectives and nouns." data-placement="right">
 								<span>Words</span>
 								<div id="words" class="entry slider"></div>
 							</div>
 
-							<div class="opt" data-toggle="tooltip" title="Random numbers between 0 and 1000" data-placement="right">
+							<div class="opt" data-toggle="tooltip" title="Random numbers between 0 and 1000." data-placement="right">
 								<span>Numbers</span>
 								<div id="numbers" class="entry slider"></div>
 							</div>
 
-							<div class="opt" data-toggle="tooltip" title="Random special characters" data-placement="right">
+							<div class="opt" data-toggle="tooltip" title="Random special characters." data-placement="right">
 								<span>Symbols</span>
 								<div id="symbols" class="entry slider"></div>
 							</div>
 
-							<div class="opt" data-toggle="tooltip" title="Completely capitalise a word" data-placement="right">
+							<div class="opt" data-toggle="tooltip" title="Use title case across all words." data-placement="right">
+								<span>Title Case</span>
+								<input type="checkbox" checked class="entry check form-check-input" id="titlecase">
+							</div>
+
+							<div class="opt" data-toggle="tooltip" title="Completely capitalise a word. Works best with Title Case." data-placement="right">
 								<span>Upper Case</span>
 								<div id="uppercase" class="entry slider capped"></div>
 							</div>
 
 							<hr>
-							<div class="opt" data-toggle="tooltip" title="Use your own formatting code. Any text in the Custom replaces all options from above. To disable Custom format, remove all text."
+							<div class="opt custom" data-toggle="tooltip" title="Use your own formatting code. Any text in the Custom replaces all options from above. To disable Custom format, remove all text."
 							  data-placement="right">
 								<span>Custom</span>
 								<input type="text" class="entry form-control" id="custom" placeholder="eg: words:2:3,titlecase,numbers:1">

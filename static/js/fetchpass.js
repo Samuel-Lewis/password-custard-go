@@ -17,13 +17,20 @@ $(document).ready(function () {
 
 // setupForm inis all sliders and form defaults
 function setupForm() {
-	var w = createSlider('words', 2, 3, 8);
-	createSlider('numbers', 1, 1, 8);
-	createSlider('symbols', 1, 1, 8);
-	createSlider('uppercase', 1, 1, 8);
+	var max = 8;
+	var w = createSlider('words', 2, 3, max);
+	createSlider('numbers', 1, 1, max);
+	createSlider('symbols', 1, 2, max);
+	createSlider('uppercase', 0, 1, max);
 
 	$('.slider').each(function (i, obj) {
 		obj.noUiSlider.on('update', function () {
+			getFormat();
+		});
+	});
+
+	$('.check').each(function (i, obj) {
+		obj.addEventListener('change', function () {
 			getFormat();
 		});
 	});
@@ -79,6 +86,7 @@ function getFormat() {
 	if (cust.value != '') {
 		f = cust.value;
 	} else {
+		// Sliders
 		$('.slider').each(function (i, obj) {
 			var vals = obj.noUiSlider.get();
 			if (vals[0] != '0' || vals[1] != '0') {
@@ -94,6 +102,13 @@ function getFormat() {
 				}
 
 				f += s + ',';
+			}
+		});
+
+		// Checkboxes
+		$('.check').each(function (i, obj) {
+			if (obj.checked) {
+				f += obj.id + ',';
 			}
 		});
 		f = f.slice(0, -1);
