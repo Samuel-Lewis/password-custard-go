@@ -25,29 +25,29 @@ func Register() {
 	groups = make(map[string][]string)
 	features = make(map[string]Applier)
 
-	groups["word"] = []string{"noun", "verb", "adjective"}
-	groups["symbol"] = []string{"symbolsimple", "symbolrandom", "symbolreplace"}
+	groups["words"] = []string{"nouns", "verbs", "adjectives"}
+	groups["symbols"] = []string{"symbolssimple", "symbolsrandom", "symbolsreplace"}
 	groups["capitalise"] = []string{"titlecase", "uppercase"}
-	groups["number"] = []string{"numbersimple", "numberrandom"}
+	groups["numbers"] = []string{"numberssimple", "numbersrandom"}
 
-	features["noun"] = Noun
-	features["verb"] = Verb
-	features["adjective"] = Adjective
-	features["symbolsimple"] = SymbolSimple
-	features["symbolrandom"] = SymbolRandom
-	features["symbolreplace"] = SymbolReplace
+	features["nouns"] = Noun
+	features["verbs"] = Verb
+	features["adjectives"] = Adjective
+	features["symbolssimple"] = SymbolSimple
+	features["symbolsrandom"] = SymbolRandom
+	features["symbolsreplace"] = SymbolReplace
 	features["titlecase"] = TitleCase
 	features["uppercase"] = UpperCase
-	features["numberrandom"] = NumberRandom
-	features["numbersimple"] = NumberSimple
+	features["numbersrandom"] = NumberRandom
+	features["numberssimple"] = NumberSimple
 
 	order = []string{
-		"noun", "verb", "adjective",
+		"nouns", "verbs", "adjectives",
 		"titlecase", "uppercase",
 		"leet",
-		"symbolreplace",
-		"numberrandom", "symbolrandom",
-		"numbersimple", "symbolsimple",
+		"symbolsreplace",
+		"numbersrandom", "symbolrandom",
+		"numberssimple", "symbolsssimple",
 	}
 
 	log.Printf("Registered %d features", len(features))

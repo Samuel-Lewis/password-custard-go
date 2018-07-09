@@ -21,7 +21,7 @@ func Raw(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 
 	// TODO: replace with some preset or default?
-	q := "word:2:3,symbol:1:2,titlecase:1:1,number:1:1,uppercase:0:1"
+	q := "words:2:3,symbols:1:2,titlecase:1:1,numbers:1:1,uppercase:0:1"
 	if val, ok := r.URL.Query()["q"]; ok {
 		if matched, _ := regexp.MatchString("^((([a-z]+):(\\d+):(\\d+),)*)(([a-z]+):(\\d+):(\\d+))(,)?$", val[0]); matched {
 			q = string(val[0])

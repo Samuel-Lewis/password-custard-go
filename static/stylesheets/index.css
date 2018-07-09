@@ -5,7 +5,6 @@ html {
 
 body {
 	/* Margin bottom by footer height */
-	margin-bottom: 60px;
 	padding: 50px;
 	background-image: url("../bg_pattern.png");
 	background-repeat: repeat;
@@ -56,6 +55,43 @@ h4 {
 
 #history {
 	padding-top: 10px;
+	font-size: 1.5em;
+}
+
+/* OPTIONS */
+
+#options {
+	vertical-align: left;
+}
+
+.opt {
+	display: flex;
+	padding: 10px;
+}
+
+.opt span {
+	width: 100px;
+	vertical-align: middle;
+}
+
+.opt .entry {
+	flex-grow: 1;
+}
+
+.slider .noUi-connect {
+	background: #007bff;
+}
+
+.slider .noUi-tooltip {
+	display: none;
+}
+
+.slider .noUi-active .noUi-tooltip {
+	display: block;
+}
+
+#format {
+	font-family: monospace;
 	font-size: 1.5em;
 }
 

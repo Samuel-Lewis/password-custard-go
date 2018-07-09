@@ -12,9 +12,13 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="https://use.fontawesome.com/afc71987e5.js"></script>
+	<script src="/static/js/refreshless/nouislider.js"></script>
+	<script src="/static/js/refreshless/wNumb.js"></script>
+	<script src="/static/js/fetchpass.js"></script>
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/static/stylesheets/index.css">
+	<link rel="stylesheet" href="/static/stylesheets/nouislider.min.css">
 </head>
 
 <body>
@@ -44,6 +48,32 @@
 					</div>
 					<div class="card-footer">
 						<button id="generate-password" class="btn btn-outline-primary btn-lg">Generate</button>
+						<button class="btn btn-sm btn-outline-primary" data-toggle="collapse" data-target="#options">Options</button>
+
+						<div id="options" class="collapse">
+							<br/>
+							<br/>
+
+							<div class="opt">
+								<span>Words</span>
+								<div id="words" class="entry slider"></div>
+							</div>
+
+							<div class="opt" data-toggle="tooltip" title="Random numbers between 0 and 1000" data-placement="right">
+								<span>Numbers</span>
+								<div id="numbers" class="entry slider"></div>
+							</div>
+
+							<hr>
+							<div class="opt" data-toggle="tooltip" title="Use your own formatting code. Any text in the Custom replaces all options from above. To disable Custom format, remove all text."
+							  data-placement="right">
+								<span>Custom</span>
+								<input type="text" class="entry form-control" id="custom" placeholder="eg: words:2:3,numbers:1:2,uppercase:1:1">
+							</div>
+
+							<hr>
+							<div id="format"></div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -65,6 +95,5 @@
 	</footer>
 
 </body>
-<script src="/static/js/fetchpass.js"></script>
 
 </html>
