@@ -1,6 +1,7 @@
 html {
 	position: relative;
 	min-height: 100%;
+	min-width: 500px;
 }
 
 body {
@@ -42,8 +43,8 @@ h4 {
 /* PASSWORD BUTTON */
 
 #copy-password {
-	position: absolute;
-	right: 40px;
+	position: relative;
+	float: right;
 	vertical-align: middle;
 }
 
@@ -60,6 +61,13 @@ h4 {
 }
 
 /* OPTIONS */
+
+#options-btn {
+	position: absolute;
+	right: 20px;
+	vertical-align: middle;
+	margin-top: 10px;
+}
 
 #options {
 	vertical-align: left;
