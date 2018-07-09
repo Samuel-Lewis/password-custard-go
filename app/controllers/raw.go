@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"log"
 	"net/http"
 	"regexp"
 	"strconv"
@@ -23,11 +22,11 @@ func Raw(w http.ResponseWriter, r *http.Request) {
 	// TODO: replace with some preset or default?
 	q := "words:2:3,symbols:1:2,titlecase:1:1,numbers:1:1,uppercase:0:1"
 	if val, ok := r.URL.Query()["q"]; ok {
-		if matched, _ := regexp.MatchString("^((([a-z]+):(\\d+):(\\d+),)*)(([a-z]+):(\\d+):(\\d+))(,)?$", val[0]); matched {
+		if matched, _ := regexp.MatchString("^([a-z]+(:[0-9]+){0,2},)*([a-z]+(:[0-9]+){0,2}),?$", val[0]); matched {
 			q = string(val[0])
 		} else {
-			// TODO: Give some real feedback to user? w.Write(generateErrorMessage()) ?
-			log.Println("Failed to parse q")
+			w.Write([]byte("[ERROR: Format syntax incorrect]"))
+			return
 		}
 	}
 	q = strings.TrimSuffix(q, ",")
@@ -41,12 +40,19 @@ func generatePassword(q string) string {
 	items := strings.Split(q, ",")
 	for _, i := range items {
 		tokens := strings.Split(i, ":")
+		s := 1
+		e := 1
 
-		// Error checked in initial parse at controllers.Raw
-		s, _ := strconv.Atoi(tokens[1])
-		e, _ := strconv.Atoi(tokens[2])
+		if (len(tokens)) > 1 {
+			s, _ = strconv.Atoi(tokens[1])
+			e = s
+		}
+
+		if len(tokens) > 2 {
+			e, _ = strconv.Atoi(tokens[2])
+		}
+
 		r := models.GetRand(s, e+1)
-
 		for r > 0 {
 			r--
 			feats = append(feats, feature.Choose(tokens[0]))
