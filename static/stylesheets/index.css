@@ -1,11 +1,11 @@
 html {
 	position: relative;
 	min-height: 100%;
+	min-width: 500px;
 }
 
 body {
 	/* Margin bottom by footer height */
-	margin-bottom: 60px;
 	padding: 50px;
 	background-image: url("../bg_pattern.png");
 	background-repeat: repeat;
@@ -43,8 +43,8 @@ h4 {
 /* PASSWORD BUTTON */
 
 #copy-password {
-	position: absolute;
-	right: 40px;
+	position: relative;
+	float: right;
 	vertical-align: middle;
 }
 
@@ -56,6 +56,60 @@ h4 {
 
 #history {
 	padding-top: 10px;
+	padding-bottom: 10px;
+	font-size: 1.5em;
+}
+
+/* OPTIONS */
+
+#options-btn {
+	position: absolute;
+	right: 20px;
+	vertical-align: middle;
+	margin-top: 10px;
+}
+
+#options {
+	vertical-align: left;
+}
+
+.opt {
+	display: flex;
+	padding: 10px;
+}
+
+.opt span {
+	width: 100px;
+	vertical-align: middle;
+}
+
+.custom span {
+	margin-top: 5px;
+}
+
+.opt .entry {
+	flex-grow: 1;
+}
+
+.opt .check {
+	position: relative;
+	left: 20px;
+}
+
+.slider .noUi-connect {
+	background: #007bff;
+}
+
+.slider .noUi-tooltip {
+	display: none;
+}
+
+.slider .noUi-active .noUi-tooltip {
+	display: block;
+}
+
+#format {
+	font-family: monospace;
 	font-size: 1.5em;
 }
 
