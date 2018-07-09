@@ -1,6 +1,6 @@
 let last_raw = '';
 
-// Pulls password from /raw API
+// ready setups the forms and requests first password
 $(document).ready(function () {
 	setupForm();
 
@@ -15,6 +15,7 @@ $(document).ready(function () {
 	$('[data-toggle="tooltip"]').tooltip();
 });
 
+// setupForm inis all sliders and form defaults
 function setupForm() {
 	var w = createSlider('words', 2, 3, 8);
 	createSlider('numbers', 1, 1, 8);
@@ -32,6 +33,7 @@ function setupForm() {
 	});
 }
 
+// createSlider makes a noUiSlider and returns it
 function createSlider(id, startMin, startMax, max) {
 	var slider = document.getElementById(id);
 	noUiSlider.create(slider, {
@@ -54,10 +56,11 @@ function createSlider(id, startMin, startMax, max) {
 	return slider;
 }
 
+// updateMax scales all length dependent sliders (.capped) to be capped at total number of words
 function updateMax() {
 	var w = document.getElementById('words').noUiSlider.get();
 	var m = parseInt(w[1]);
-	m = Math.max(m,1);
+	m = Math.max(m, 1);
 	$('.capped').each(function (i, obj) {
 		obj.noUiSlider.updateOptions({
 			range: {
@@ -68,7 +71,7 @@ function updateMax() {
 	});
 }
 
-// Reads form elements and generates formatting code
+// getFormat reads form elements and generates formatting code (and shows it)
 function getFormat() {
 	var cust = document.getElementById('custom');
 	var f = '';
@@ -100,6 +103,7 @@ function getFormat() {
 	return f;
 }
 
+// getRawPassowrd sends ajax request to /raw, with formatting options if present
 function getRawPassword() {
 	$('#copy-password').attr('data-original-title', 'Copy');
 
@@ -122,6 +126,7 @@ function getRawPassword() {
 	});
 }
 
+// copyToClipboard copies current password to client clipboard
 function copyToClipboard() {
 	// Update tooltip
 	$('#copy-password').attr('data-original-title', 'Copied!')
@@ -141,7 +146,7 @@ function copyToClipboard() {
 	document.body.removeChild(textArea);
 }
 
-// Pastes last 10 passwords to history box
+// loadPass records and shows last 10 passwords to history box
 const history = [];
 
 function logPass(pass) {
