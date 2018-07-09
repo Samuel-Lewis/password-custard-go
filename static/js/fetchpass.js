@@ -16,11 +16,19 @@ $(document).ready(function () {
 });
 
 function setupForm() {
-	createSlider('words', 2, 3, 8);
-	createSlider('numbers', 1, 1, 3);
+	var w = createSlider('words', 2, 3, 8);
+	createSlider('numbers', 1, 1, 8);
+	createSlider('symbols', 1, 1, 8);
+	createSlider('uppercase', 1, 1, 8);
 
-	$('.slider').each(function(i, obj){
-		obj.noUiSlider.on('update', function(){getFormat()});
+	$('.slider').each(function (i, obj) {
+		obj.noUiSlider.on('update', function () {
+			getFormat();
+		});
+	});
+
+	w.noUiSlider.on('update', function () {
+		updateMax();
 	});
 }
 
@@ -42,7 +50,22 @@ function createSlider(id, startMin, startMax, max) {
 			'max': max
 		},
 	});
-	
+
+	return slider;
+}
+
+function updateMax() {
+	var w = document.getElementById('words').noUiSlider.get();
+	var m = parseInt(w[1]);
+	m = Math.max(m,1);
+	$('.capped').each(function (i, obj) {
+		obj.noUiSlider.updateOptions({
+			range: {
+				'min': 0,
+				'max': m,
+			}
+		})
+	});
 }
 
 // Reads form elements and generates formatting code
@@ -56,12 +79,23 @@ function getFormat() {
 		$('.slider').each(function (i, obj) {
 			var vals = obj.noUiSlider.get();
 			if (vals[0] != '0' || vals[1] != '0') {
-				f += obj.id + ':' + vals[0] + ':' + vals[1] + ','
+				var s = obj.id;
+
+				// Optional quantity args formatting
+				if (vals[0] == vals[1]) {
+					if (vals[0] != '1') {
+						s += ':' + vals[0];
+					}
+				} else {
+					s += ':' + vals[0] + ':' + vals[1];
+				}
+
+				f += s + ',';
 			}
 		});
 		f = f.slice(0, -1);
 	}
-	
+
 	document.getElementById('format').innerHTML = f;
 	return f;
 }
