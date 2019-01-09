@@ -36,6 +36,7 @@ func Register() {
 	features["symbolssimple"] = SymbolSimple
 	features["symbolsrandom"] = SymbolRandom
 	features["symbolsreplace"] = SymbolReplace
+	features["leet"] = Leet
 	features["titlecase"] = TitleCase
 	features["uppercase"] = UpperCase
 	features["numbersrandom"] = NumberRandom

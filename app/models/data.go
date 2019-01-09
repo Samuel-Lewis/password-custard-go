@@ -7,6 +7,7 @@ import (
 	"log"
 	"math/big"
 	"os"
+	"unicode"
 )
 
 var types map[string][]string
@@ -38,6 +39,23 @@ func GetWord(t string) string {
 func GetSymbol() string {
 	s := symbols[GetRand(0, len(symbols))]
 	return string(s)
+}
+
+// HasLeet checks if a substitute leet character is available for c
+func HasLeet(c byte) bool {
+	c = byte(unicode.ToLower(rune(c)))
+	_, ok := leet[c]
+	return ok
+}
+
+// GetLeet gets a random replacement for the given character
+func GetLeet(c byte) byte {
+	c = byte(unicode.ToLower(rune(c)))
+	if !HasLeet(c) {
+		return c
+	}
+	s := leet[c][GetRand(0, len(leet[c]))]
+	return s
 }
 
 // GetRand gets a crypto rand generated number in range [min, max)
@@ -113,7 +131,9 @@ func readLeet(path string) map[byte][]byte {
 		var key byte
 		var datas string
 		fmt.Sscanf(scanner.Text(), "%c | %s", &key, &datas)
-		l[key] = []byte(datas)
+		if datas != "" {
+			l[key] = []byte(datas)
+		}
 	}
 
 	log.Printf("Loaded %d characters from '%s'", len(l), path)

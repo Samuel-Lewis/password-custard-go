@@ -22,6 +22,7 @@ function setupForm() {
 	createSlider('numbers', 1, 1, max);
 	createSlider('symbols', 1, 2, max);
 	createSlider('uppercase', 0, 1, max);
+	createSlider('leet', 1, 2, max);
 
 	$('.slider').each(function (i, obj) {
 		obj.noUiSlider.on('update', function () {
