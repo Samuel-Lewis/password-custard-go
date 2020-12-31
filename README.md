@@ -1,3 +1,7 @@
+## Deprecation notice!
+A new version is available at [samuel-lewis.github.io/password-custard](https://samuel-lewis.github.io/password-custard/). Source can be found at [github.com/Samuel-Lewis/password-custard](https://github.com/Samuel-Lewis/password-custard)
+
+
 # Password Custard Password Generator
 http://password-custard.herokuapp.com/
 
