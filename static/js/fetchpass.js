@@ -2,6 +2,7 @@ let last_raw = '';
 
 // ready setups the forms and requests first password
 $(document).ready(function () {
+  $('#redirectModal').modal('show');
 	setupForm();
 
 	// GET data from /raw to show
