@@ -2,7 +2,7 @@
 	"comment": "",
 	"ignore": "test",
 	"package": [],
-	"rootPath": "github.com/Samuel-Lewis/Password-Custard",
+	"rootPath": "github.com/Samuel-Lewis/password-custard-go",
 	"heroku": {
 		"install": [
 			"./..."

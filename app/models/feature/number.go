@@ -3,7 +3,7 @@ package feature
 import (
 	"fmt"
 
-	"github.com/Samuel-Lewis/Password-Custard/app/models"
+	"github.com/Samuel-Lewis/password-custard-go/app/models"
 )
 
 // NumberSimple inserts a random number between words

@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/Samuel-Lewis/Password-Custard/app/models"
+	"github.com/Samuel-Lewis/password-custard-go/app/models"
 )
 
 // Noun inserts a random noun into the phrase

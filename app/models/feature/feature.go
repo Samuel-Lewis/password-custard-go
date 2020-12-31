@@ -4,7 +4,7 @@ import (
 	"log"
 	"sort"
 
-	"github.com/Samuel-Lewis/Password-Custard/app/models"
+	"github.com/Samuel-Lewis/password-custard-go/app/models"
 )
 
 // Applier is function type for function to take the current password, manipulate, and return it

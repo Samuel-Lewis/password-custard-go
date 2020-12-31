@@ -3,7 +3,7 @@ package feature
 import (
 	"strings"
 
-	"github.com/Samuel-Lewis/Password-Custard/app/models"
+	"github.com/Samuel-Lewis/password-custard-go/app/models"
 )
 
 // TitleCase changes all words to title case

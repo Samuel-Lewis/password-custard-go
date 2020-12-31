@@ -6,8 +6,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/Samuel-Lewis/Password-Custard/app/models"
-	"github.com/Samuel-Lewis/Password-Custard/app/models/feature"
+	"github.com/Samuel-Lewis/password-custard-go/app/models"
+	"github.com/Samuel-Lewis/password-custard-go/app/models/feature"
 )
 
 // PassOut response type to the write
